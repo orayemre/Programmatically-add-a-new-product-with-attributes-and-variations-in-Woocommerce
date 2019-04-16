@@ -2,10 +2,10 @@
 /* By Remodeus */
 add_action('save_post', 'auto_add_product_attributes', 50, 3);
 function auto_add_product_attributes($post_id, $post, $update){
-    if ($post->post_type != 'product') return;
+    if ($post->post_type != 'product') return; // Only products
     if (defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )
         return $post_id;
-    if( $update)
+    if( $update )
         return $post_id;
     if ( ! current_user_can( 'edit_product', $post_id))
         return $post_id;
@@ -36,7 +36,7 @@ if($attributes){
     );
 $objProduct->save();
   }
-  update_post_meta($post_id,'_product_attributes',$productAttributes); // save the product attributes
+  update_post_meta($post_id,'_product_attributes',$productAttributes);
 
 $variations = array(
   array("regular_price"=>"10","price"=>"","sku"=>"","attributes"=>array(array("name"=>"Size","option"=>"14 x 14"),array("name"=>"Materials","option"=>"Cotton Twill")),"manage_stock"=>"","stock_quantity"=>"8"),
@@ -63,7 +63,7 @@ if($variations){
         $var_attributes[$taxonomy]=$attr_val_slug;
       }
       $objVariation->set_attributes($var_attributes);
-      $objVariation->save(); // save the product variations
+      $objVariation->save();
     }
 }
 }
