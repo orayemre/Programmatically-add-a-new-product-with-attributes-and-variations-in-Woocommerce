@@ -45,10 +45,10 @@ $num3 = mt_rand(100000000, 999999999);
 $num4 = mt_rand(100000000, 999999999);
 
 $variations = array(
-  array("regular_price"=>"10","price"=>"","sku"=>$num1,"attributes"=>array(array("name"=>"Size","option"=>"14 x 14"),array("name"=>"Materials","option"=>"Cotton Twill")),"manage_stock"=>"","stock_quantity"=>"999"),
-  array("regular_price"=>"12","price"=>"","sku"=>$num2,"attributes"=>array(array("name"=>"Size","option"=>"14 x 14"),array("name"=>"Materials","option"=>"Spun Polyester")),"manage_stock"=>"","stock_quantity"=>"999"),
-  array("regular_price"=>"14","price"=>"","sku"=>$num3,"attributes"=>array(array("name"=>"Size","option"=>"18 x 18"),array("name"=>"Materials","option"=>"Cotton Twill")),"manage_stock"=>"","stock_quantity"=>"999"),
-  array("regular_price"=>"16","price"=>"","sku"=>$num4,"attributes"=>array(array("name"=>"Size","option"=>"18 x 18"),array("name"=>"Materials","option"=>"Spun Polyester")),"manage_stock"=>"","stock_quantity"=>"999")
+  array("regular_price"=>"10","price"=>"","sku"=>$num1,"attributes"=>array(array("name"=>"Size","option"=>"14 x 14"),array("name"=>"Materials","option"=>"Cotton Twill")),"manage_stock"=>"1","stock_quantity"=>"999"),
+  array("regular_price"=>"12","price"=>"","sku"=>$num2,"attributes"=>array(array("name"=>"Size","option"=>"14 x 14"),array("name"=>"Materials","option"=>"Spun Polyester")),"manage_stock"=>"1","stock_quantity"=>"999"),
+  array("regular_price"=>"14","price"=>"","sku"=>$num3,"attributes"=>array(array("name"=>"Size","option"=>"18 x 18"),array("name"=>"Materials","option"=>"Cotton Twill")),"manage_stock"=>"1","stock_quantity"=>"999"),
+  array("regular_price"=>"16","price"=>"","sku"=>$num4,"attributes"=>array(array("name"=>"Size","option"=>"18 x 18"),array("name"=>"Materials","option"=>"Spun Polyester")),"manage_stock"=>"1","stock_quantity"=>"999")
 );
 if($variations){
     foreach($variations as $variation){
@@ -59,7 +59,7 @@ if($variations){
       if(isset($variation["sku"]) && $variation["sku"]){
         $objVariation->set_sku($variation["sku"]);
       }
-      $objVariation->set_manage_stock($variation["manage_stock"]);
+      $objVariation->set_manage_stock($variation["manage_stock"]); // 1 or 0
       $objVariation->set_stock_quantity($variation["stock_quantity"]);
       $objVariation->set_stock_status('instock');
       $var_attributes = array();
